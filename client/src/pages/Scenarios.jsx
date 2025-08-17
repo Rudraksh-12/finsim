@@ -33,11 +33,11 @@ export default function Scenarios() {
   }
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-14">
-      <h2 className="text-3xl font-semibold mb-6">Your Scenarios</h2>
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-14">
+      <h2 className="text-2xl sm:text-3xl font-semibold mb-6">Your Scenarios</h2>
       <div className="glass rounded-2xl p-6 mb-6">
         <div className="text-base text-neutral-400 mb-3">Create</div>
-        <div className="grid md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <Field label="Name" value={name} onChange={setName} type="text" />
           <Field label="Income" value={income} onChange={(v) => setIncome(Number(v))} />
           <Field label="Expense" value={expense} onChange={(v) => setExpense(Number(v))} />
@@ -46,7 +46,7 @@ export default function Scenarios() {
           </div>
         </div>
       </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {scenarios.map((s) => (
           <div key={s.id} className="glass rounded-xl p-5">
             <div className="font-semibold text-white text-lg">{s.name}</div>

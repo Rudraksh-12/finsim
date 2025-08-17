@@ -27,10 +27,10 @@ export default function Play() {
   }, [totalIncome, totalExpense, setParameters])
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-14">
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-14">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-3xl font-semibold">Build your scenario</h2>
-        <div className="flex gap-2">
+        <h2 className="text-2xl sm:text-3xl font-semibold">Build your scenario</h2>
+        <div className="flex flex-col sm:flex-row gap-2">
           <button onClick={() => runLocalSimulation()} className="rounded-lg bg-emerald-500 px-5 py-2.5 text-neutral-900 font-semibold text-base">Run Local</button>
           <button disabled={loading} onClick={async () => { setLoading(true); try { const res = await runSimulation({ income: totalIncome, expense: totalExpense }); setServerResult(res) } finally { setLoading(false) } }} className="rounded-lg glass px-5 py-2.5 text-neutral-200 inline-flex items-center gap-2 disabled:opacity-50 text-base">
             {loading ? 'Running...' : 'Run Server'}
@@ -40,8 +40,8 @@ export default function Play() {
           </button>
         </div>
       </div>
-      <div className="grid md:grid-cols-3 gap-6">
-        <div className="md:col-span-2 space-y-6">
+      <div className="grid lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2 space-y-6">
           <BaselineCard
             baseIncome={parameters.baseIncome}
             baseExpense={parameters.baseExpense}
@@ -90,7 +90,7 @@ function EventPicker({ selectedEvents, setSelectedEvents }) {
   return (
     <div className="glass rounded-2xl p-6">
       <div className="text-base text-neutral-400 mb-3">Life events</div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {LIFE_EVENTS.map((evt) => (
           <button
             key={evt.id}
@@ -104,9 +104,9 @@ function EventPicker({ selectedEvents, setSelectedEvents }) {
         ))}
       </div>
       {selectedEvents.length > 0 && (
-        <div className="mt-6 space-y-3">
+        <div className="mt-6 space-y-4">
           {selectedEvents.map((evt) => (
-            <div key={evt.id} className="flex items-center gap-3">
+            <div key={evt.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
               <span className="shrink-0 glass rounded-full px-3.5 py-1.5 text-sm">{evt.label}</span>
               <label className="text-sm grow">
                 <div className="text-neutral-400 mb-1">{evt.type === 'income' ? 'Income change per year' : 'Expense change per year'}</div>
@@ -143,7 +143,7 @@ function SummaryCard({ income, expense }) {
   return (
     <div className="glass rounded-2xl p-6">
       <div className="text-base text-neutral-400 mb-3">Summary</div>
-      <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <KPI label="Income" value={`$${income.toLocaleString()}`} />
         <KPI label="Expense" value={`$${expense.toLocaleString()}`} />
         <KPI label="Savings / yr" value={`$${savings.toLocaleString()}`} positive={savings >= 0} />

@@ -7,12 +7,12 @@ export default function Dashboard() {
   const data = timeline.map((t, i) => ({ year: i + 1, cash: t.cash, netWorth: t.netWorth }))
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-14">
-      <h2 className="text-3xl font-semibold mb-6">Your Dashboard</h2>
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-14">
+      <h2 className="text-2xl sm:text-3xl font-semibold mb-6">Your Dashboard</h2>
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="glass rounded-2xl p-6">
           <div className="text-base text-neutral-400 mb-3">Net Worth Projection</div>
-          <div className="h-72">
+          <div className="h-64 sm:h-72">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={data} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
                 <defs>
@@ -31,7 +31,7 @@ export default function Dashboard() {
         </div>
         <div className="glass rounded-2xl p-6">
           <div className="text-base text-neutral-400 mb-3">Cash Flow</div>
-          <div className="h-72">
+          <div className="h-64 sm:h-72">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={data}>
                 <XAxis dataKey="year" stroke="#666" />

@@ -8,15 +8,15 @@ export default function Compare() {
   const result = compareScenarios(a, b)
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-14">
-      <h2 className="text-3xl font-semibold mb-6">Compare Scenarios</h2>
-      <div className="grid md:grid-cols-2 gap-6">
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-14">
+      <h2 className="text-2xl sm:text-3xl font-semibold mb-6">Compare Scenarios</h2>
+      <div className="grid lg:grid-cols-2 gap-6">
         <ScenarioCard label="Scenario A" params={a} setParams={setA} />
         <ScenarioCard label="Scenario B" params={b} setParams={setB} />
       </div>
       <div className="glass rounded-2xl p-5 mt-6">
         <div className="text-sm text-neutral-400 mb-3">Delta</div>
-        <div className="grid sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <Delta label="Final Net Worth" a={result.a.finalNetWorth} b={result.b.finalNetWorth} />
           <Delta label="Savings Rate" a={result.a.savingsRate * 100} b={result.b.savingsRate * 100} suffix="%" />
           <Delta label="Avg. Cash" a={avg(result.a.timeline.map(t => t.cash))} b={avg(result.b.timeline.map(t => t.cash))} />
